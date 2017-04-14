@@ -1,0 +1,6 @@
+core:
+  autoHideMenuBar: true
+  themes: [
+    "one-dark-ui"
+    "solarized-dark-syntax"
+  ]
