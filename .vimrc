@@ -1,7 +1,8 @@
 syntax enable   " enable syntax processing
 
-set tabstop=4   " number of visual spaces per tab
+" set tabstop=8   " number of visual spaces per tab (but I don't use tabs!!!)
 set softtabstop=4   " number of spaces in tab when editing
+set shiftwidth=4    " how much to indent in C-style autoindent
 set expandtab   " tabs are spaces
 
 set number  " show line numbers
