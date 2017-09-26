@@ -1,8 +1,8 @@
 filetype on  " enable detecting filetype
 syntax enable   " enable syntax processing
 
-set softtabstop=2   " number of spaces in tab when editing
-set shiftwidth=2
+set softtabstop=4   " number of spaces in tab when editing
+set shiftwidth=4    " how much to indent in C-style autoindent
 set expandtab   " tabs are spaces
 
 set number  " show line numbers
@@ -22,6 +22,17 @@ noremap <space> za
 let g:airline_theme='solarized'
 let g:airline_powerline_fonts = 1
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_log_list = 1
+let g:syntastic_auto_log_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+
+
 " Plugins with Vim Plug
 call plug#begin('~/.vim/plugged')
 
@@ -33,7 +44,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'powerline/powerline' " fonts?
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
-
+Plug 'scrooloose/syntastic'
+Plug 'eslint/eslint'
 
 " Initialize plugin system
 call plug#end()
