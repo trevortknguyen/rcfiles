@@ -1,4 +1,5 @@
 filetype on  " enable detecting filetype
+filetype plugin on
 syntax enable   " enable syntax processing
 
 set softtabstop=4   " number of spaces in tab when editing
@@ -14,13 +15,36 @@ set showmatch   " highlight matching [{()}]
 
 " folding
 set foldenable          " enable folding
-set foldlevelstart=10   " open most folds by default
-set foldnestmax=10      " 10 nested fold max
-" space opens/closes folds
-noremap <space> za
+
+map <space> <leader>
+noremap <leader><space> :echo "You are a terrible programmer."<Enter>
+
+map <C-/> :echo "Hi."<Enter>
+
+set encoding=utf-8
 
 let g:airline_theme='solarized'
-let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.crypt = 'CRYPT'
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = 'branch'
+let g:airline_symbols.paste = 'PASTE'
+let g:airline_symbols.spell = 'SPELL'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.space = " "
+
+set t_Co=256
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -28,15 +52,9 @@ set statusline+=%*
 
 let g:syntastic_always_populate_log_list = 1
 let g:syntastic_auto_log_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-    
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_javascript_checkers = ['eslint']
 
 " Plugins with Vim Plug
 call plug#begin('~/.vim/plugged')
@@ -46,7 +64,6 @@ Plug 'altercation/vim-colors-solarized' " cool colors
 Plug 'gregsexton/matchtag' " matching HTML tags
 Plug 'vim-airline/vim-airline' " that cool thing at the bottom
 Plug 'vim-airline/vim-airline-themes'
-Plug 'powerline/powerline' " fonts?
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/syntastic'
